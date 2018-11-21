@@ -16,3 +16,12 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+/*
+ * Now we set up RESTful API routes.
+ * The resource method of the Route facade will create all the actions we need automatically.
+ *  However, we don't need edit, show or store so we'll exclude those.
+ */
+Route::resource('/cruds', 'CrudsController', [
+    'except' => ['edit', 'show', 'store']
+]);
